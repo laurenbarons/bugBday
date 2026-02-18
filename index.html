@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>bug gets his big B!</title>
+<title>Bug Birthday Animation</title>
 <style>
   html, body {
     margin: 0;
@@ -15,30 +15,39 @@
     align-items: center;
   }
 
-  video {
+  .video-container {
+    position: relative;
+    width: 95%;   /* scale down a bit from full width */
     max-width: 100%;
-    max-height: 100%;
+    height: auto;
+    overflow: hidden; /* crop any tiny excess */
+  }
+
+  video {
+    display: block;
+    width: 100%;
+    height: auto;
     object-fit: contain;
+    transform: translateX(-3px); /* crop 3px from right */
   }
 </style>
 </head>
 <body>
 
-<video id="vid" autoplay loop muted playsinline preload="auto">
-  <source src="bugBigBAnimation.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<div class="video-container">
+  <video id="vid" autoplay loop muted playsinline preload="auto">
+    <source src="bugBigBAnimation.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
 <script>
   const vid = document.getElementById('vid');
 
-  // Try to autoplay on mobile
   document.addEventListener('DOMContentLoaded', () => {
     const playPromise = vid.play();
-
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Fallback: show controls if autoplay blocked
         vid.setAttribute('controls', 'controls');
       });
     }
