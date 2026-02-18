@@ -1,31 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Bug Birthday</title>
 <style>
-body {
-  margin: 0;
-  background: white;
-}
-video {
-  width: 100vw;
-  height: 100vh;
-  object-fit: contain;
-}
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
 </style>
 </head>
 <body>
-<video autoplay loop muted playsinline>
+
+<video id="vid" autoplay loop muted playsinline preload="auto">
   <source src="bug.mp4" type="video/mp4">
+  Your browser does not support the video tag.
 </video>
-  <script>
-const vid = document.getElementById("vid");
-vid.play().catch(() => {
-  vid.setAttribute("controls", "controls");
-});
+
+<script>
+  const vid = document.getElementById('vid');
+
+  // Attempt to play on load
+  document.addEventListener('DOMContentLoaded', () => {
+    vid.play().catch(() => {
+      // If autoplay fails (common on mobile), show controls for manual play
+      vid.setAttribute('controls', 'controls');
+    });
+  });
 </script>
 
 </body>
 </html>
-
-
