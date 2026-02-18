@@ -24,10 +24,25 @@
 </head>
 <body>
 
-<video autoplay loop muted playsinline preload="auto">
+<video id="vid" loop muted playsinline preload="auto">
   <source src="bugBigBAnimation.mp4" type="video/mp4">
-  Your browser does not support the video tag.
 </video>
+
+<script>
+  const vid = document.getElementById('vid');
+
+  // Try to autoplay
+  document.addEventListener('DOMContentLoaded', () => {
+    const playPromise = vid.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // fallback for iOS/Android: show controls
+        vid.setAttribute('controls', 'controls');
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
