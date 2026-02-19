@@ -22,9 +22,12 @@
   /* Mobile-specific adjustments */
   @media (max-width: 768px) {
     video {
-      width: 95%;       /* scale down a bit */
-      max-height: 95%;  /* prevent cutting off */
-      margin: 0;        /* lock to top */
+      width: 100%;          /* full width of container */
+      height: auto;
+      transform: scale(0.8); /* scale down to 80% */
+      transform-origin: top center; /* lock to top while scaling */
+      display: block;
+      margin: 0;             /* lock to top */
     }
   }
 </style>
