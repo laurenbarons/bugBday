@@ -3,54 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bug Birthday Animation</title>
+<title>bug gets his big B!</title>
+
 <style>
   html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    background: black;
+    background: white;
   }
 
   video {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
     display: block;
   }
 
-  /* Mobile-specific adjustments */
+  /* Desktop: fit height of screen */
+  @media (min-width: 769px) {
+    video {
+      height: 100vh;
+      width: auto;
+    }
+  }
+
+  /* Mobile: fit width of screen, lock to top */
   @media (max-width: 768px) {
     video {
-      width: 100%;          /* full width of container */
+      width: 100%;
       height: auto;
-      transform: scale(0.8); /* scale down to 80% */
-      transform-origin: top center; /* lock to top while scaling */
-      display: block;
-      margin: 0;             /* lock to top */
     }
   }
 </style>
 </head>
+
 <body>
 
-<video id="vid" autoplay loop muted playsinline preload="auto">
+<video autoplay loop muted playsinline preload="auto">
   <source src="bugBigBAnimation.mp4" type="video/mp4">
-  Your browser does not support the video tag.
 </video>
-
-<script>
-  const vid = document.getElementById('vid');
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const playPromise = vid.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        vid.setAttribute('controls', 'controls');
-      });
-    }
-  });
-</script>
 
 </body>
 </html>
