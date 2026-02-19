@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>bug gets his big B!</title>
+<title>Bug Birthday Animation</title>
 
 <style>
   html, body {
@@ -16,15 +16,22 @@
     display: block;
   }
 
-  /* Desktop: fit height of screen */
+  /* Desktop: fit height & center horizontally */
   @media (min-width: 769px) {
+    body {
+      display: flex;
+      justify-content: center; /* center horizontally */
+      align-items: center;     /* center vertically */
+      height: 100vh;
+    }
+
     video {
       height: 100vh;
       width: auto;
     }
   }
 
-  /* Mobile: fit width of screen, lock to top */
+  /* Mobile: fit width, locked to top */
   @media (max-width: 768px) {
     video {
       width: 100%;
